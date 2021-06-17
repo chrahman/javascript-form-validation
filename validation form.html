@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> Javascript Form Validation </title>
+	<meta name="description" content="How to make Javascript Form Validation, HTML form Validation">
+	<meta name="keywords" content="Javascript Form Validation,Javascript,Validation,HTMl Validation">
+	<style>
+		body {
+			margin-top: 35px;
+			background-color: orange;
+			height: 100%;
+			font-family: verdana;
+		}
+
+		#container {
+			width: 100%;
+		}
+
+		#heading {
+			width: 100%;
+			text-align: center;
+			font-size: 35px;
+
+		}
+
+		.dev {
+			margin-top: 15px;
+			width: 100%;
+			text-align: center;
+			font-size: 35px;
+
+		}
+
+		#inner {
+			width: 80%;
+			margin: 0 auto;
+
+		}
+
+		#inner input[type=text],
+		input[ type=date] {
+			width: 100%;
+			height: 35px;
+			padding: 6px;
+			box-sizing: border-box;
+			border-radius: 3px;
+			outline: none;
+			border: 1px solid white;
+			margin-top: 5px;
+		}
+
+		select {
+			width: 100%;
+			padding: 6px;
+			box-sizing: border-box;
+			border-radius: 3px;
+			outline: none;
+			border: 1px solid white;
+			height: 35px;
+		}
+
+		#inner input[type=submit] {
+			background-color: #2197FA;
+			color: white;
+			width: 70px;
+			height: 35px;
+			margin-top: -10px;
+			padding: 8px;
+			box-sizing: border-box;
+			border-radius: 6px;
+			padding-top: -10px;
+			outline: none;
+			border: 1px solid orange;
+		}
+
+		td {
+			padding: 5px;
+			font-size: 12px;
+
+		}
+
+		label {
+			font-family: verdana;
+			font-size: 14px;
+		}
+	</style>
+	<script>
+		function validateForm() {
+			var ptname = document.vaccineform.pname.value;
+			var ptcnic = document.vaccineform.pcnic.value;
+			var ptdob = document.vaccineform.pdob.value;
+			var inputdate = new Date(ptdob);
+			var givendate = new Date('2010-01-01');
+
+			var CNICMaxLength = 13;
+			var numbers = /^[0-9]+$/;
+			var letters = /^[A-Za-z][A-Za-z]+$/;
+
+			if (document.vaccineform.pname.value != "") {
+				if (document.vaccineform.pcnic.value != "") {
+					if (document.vaccineform.pmobile.value != "") {
+						if (document.vaccineform.pdob.value != "") {
+							if (ptname.match(letters)) {
+								if (ptcnic.length == CNICMaxLength) {
+
+									if (ptcnic.match(numbers)) {
+										if (inputdate.getYear() < givendate.getYear()) {
+
+											alert("Succesfully Registrated!!");
+											return ture;
+										}
+										else {
+											alert("DOB cannot be greater than 01-jan-2010");
+											return false;
+										}
+									}
+									else {
+										alert("CNIC Field contain only degits.");
+										return false;
+
+									}
+								}
+								else {
+									alert("Invalid CNIC Number");
+									return false;
+								}
+							}
+
+							else {
+								alert("Name can contain only characters");
+								return false;
+							}
+						}
+						else {
+							alert("Enter your date of birth");
+						}
+					}
+					else {
+						alert("Enter your Mobile number");
+						return false;
+					}
+				}
+				else {
+					alert("CNIC must required");
+					return false;
+				}
+			}
+			else {
+				alert("Field cannot be empty");
+				return false;
+			}
+		}
+
+
+	</script>
+
+
+</head>
+
+<body>
+
+	<div id="container">
+		<div id="heading">
+			<b>Onine Vaccine Registration Form Developed By : Name (VUDAILY.COM)</b>
+		</div>
+
+
+		<br>
+		<div id="inner">
+			<form method="POST" name="vaccineform" action=" " onsubmit="return validateForm()">
+				<table width="100%">
+					<tr>
+						<td> <label>Name</label> <br>
+							<input type="text" name="pname" placeholder="Name">
+						</td>
+						<td> <label>CNIC</label> <br>
+							<input type="text" name="pcnic" placeholder="CNIC">
+						</td>
+					</tr>
+
+					<tr>
+						<td> <label>Mobile</label> <br>
+							<input type="text" name="pmobile" placeholder="Mobile">
+						</td>
+						<td><label>DOB</label> <br>
+							<input type="date" name="pdob" placeholder="DOB">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"><label>Nearby Center</label><br>
+							<select style="margin-top: 5px;" id="ncenter" name="selcenter" required>
+								<option value="center" selected disabled="disabled">Select Your Nearest Center</option>
+								<option value="Raiwind">Raiwind</option>
+								<option value="Lahore City">Lahore City</option>
+								<option value="Cantt">Cantt</option>
+								<option value="Shalimar">Shalimar</option>
+								<option value="Railway Dispensar">Railway Dispensar</option>
+								<option value="indus hospital sabzarar">indus hospital sabzarar</option>
+								<option value="LDA Sports Complex Minar e Pakistan">LDA Sports Complex Minar e Pakistan
+								</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"><br>
+							<input type="submit">
+
+						</td>
+					</tr>
+				</table>
+
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>
