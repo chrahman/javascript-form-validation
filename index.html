@@ -174,7 +174,7 @@
 				<table width="100%">
 					<tr>
 						<td> <label>Name</label> <br>
-							<input type="text" name="pname" placeholder="Name">
+							<input type="text" name="pname" placeholder="Name" required oninvalid="this.setCustomValidity('Please select Accused Name')" onchange="setCustomValidity('')">
 						</td>
 						<td> <label>CNIC</label> <br>
 							<input type="text" name="pcnic" placeholder="CNIC">
