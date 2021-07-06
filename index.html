@@ -216,6 +216,26 @@
 		</div>
 	</div>
 
+	
+	<h2>Email & Phone No Validation</h2>
+	<br>
+	<form onsubmit="kaka()" action="#">
+	   <label>Enter Email as abc@gmail.com</label>
+	   <input type="text" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required placeholder="Enter your email">
+		
+	   <br>
+		
+	   <label>Enter Phone as +923498717195</label>
+	   <input type="text" pattern="[+]{1}[0-9]{12}" required placeholder="Enter your phone no">   
+	   <br>
+		
+	   <input type="submit" value="Submit" id="myform" >
+	</form>
+	<script>
+	function kaka() {
+	    alert("submitted"); 
+	}
+	</script>
 </body>
 
 </html>
